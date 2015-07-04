@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The Rental Help</title>
+	<link rel="stylesheet" href="styles/styles.css">
+	<script src="//use.typekit.net/whs8srq.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+	<header>
+		<div class="wrapper">
+			<h1>The Rental Help</h1>
+			<p>Scraping Kijiji, and Craigslist to make your home hunt suck a little less in the city of Toronto.</p>
+			<form>
+				<label for="location">Choose your hood</label>
+				<input type="text" id="location">
+				<!-- end of location select -->
+				<label for="price">Name your price</label>
+				<input id="price" type="range" min="1200" max="3000" step="5" />
+				<!-- end of price -->
+				<label for="bedrooms">How many beds?</label>
+				<select name="bedrooms" id="beds">
+					<option value="1">One</option>
+					<option value="2">Two</option>
+					<option value="3">Three</option>
+				</select>
+				<!-- end of bedrooms -->
+				<input type="submit" value="Find me a home">
+			</form>	
+		</div>
+	</header>
+	
+	<section class="results ">
+		<div class="wrapper found clearfix"></div>
+	</section>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.2/packery.pkgd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.min.js"></script>
+	<script src="js/main.min.js"></script>
+</body>
+</html>
