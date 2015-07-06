@@ -71,7 +71,7 @@ hood.displayInfo = function(result){
 };
 
 // Saving it's instance to var 
-var slider = $("#range").data("ionRangeSlider");
+// var slider = $("#range").data("ionRangeSlider");
  
 // Fire public method 
 // slider.reset();
@@ -85,7 +85,7 @@ $(function(){
 	    max: 3000,
 	    from: 1000,
 	    to: 4000,
-	    type: 'double',
+	    type: 'single',
 	    step: 1,
 	    prefix: "$",
 	    grid: true
