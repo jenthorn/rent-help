@@ -15,11 +15,24 @@
 			<div class="flexwrap">
 				<img src="images/homeIcon.png" alt="home icon">
 				<h1>The Rental Help</h1>
-				<p>Scraping Kijiji, and Craigslist <br>to make your home hunt suck a little less in the city of Toronto.</p>
+				<h3>Find an over priced rental in a hipster neighbourhood</h3>
+				<p>Renting in the city of Toronto sucks, we know.</p> 
+				<p class="theresHope">Hopefully this will make it hurt a little less. Scraping Kijiji and Craigslist&mdash;no posts from creepy dudes looking to be your new room mate, and no basement apartments found here.</p>
 			</div>
 			<form>
 				<label for="location">Choose your hood</label>
-				<input type="text" id="location" placeholder="Type in your dream location by street name">
+				<select name="bedrooms" id="location">
+					<option value="parkdale">Parkdale</option>
+					<option value="queen west">West Queen West</option>
+					<option value="bellwoods">Bellwoods</option>
+					<option value="king west">King West</option>
+					<option value="little italy">Little Italy</option>
+					<option value="junction">Junction</option>
+					<option value="annex">Annex</option>
+					<option value="liberty village">Lib Vil</option>
+					<option value="beaches">Beaches</option>
+				</select>
+				<!-- <input type="text" id="location" placeholder="Type in your dream location by street name"> -->
 				<!-- end of location select -->
 				<label for="price">Name your price</label>
 				<!-- <div style="position: relative; padding: 200px;"> -->
@@ -27,7 +40,7 @@
 		        <input type="text" id="price" name="range" />
 			    </div>
 			<!-- 	</div> -->
-				<!-- <input id="price" type="range" min="1200" max="3000" step="5" /> -->
+				
 				<!-- end of price -->
 				<label for="bedrooms">How many beds?</label>
 				<select name="bedrooms" id="beds">
@@ -45,8 +58,16 @@
 		<div class="wrapper found clearfix"></div>
 	</section>
 
+	<div class="loading">
+		<div class="loadingInfo">
+			<img src="images/hoodwait.gif"alt="">
+			<p>Loading...</p>
+		</div>
+	</div>
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="js/moment.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/packery/1.4.2/packery.pkgd.min.js"></script>
 	<script src="js/ion.rangeSlider.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.min.js"></script>

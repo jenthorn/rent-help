@@ -1,17 +1,31 @@
 @import 'setup';
 
+html {
+	font-size: 62.5%;
+}
+
 body {
 	font-family: futura-pt;
 	color: #333;
+	font-size: 2.5rem;
 }
+
+
 
 h1 {
 	font-family: grad;
-	font-size: 85px;
+	font-size: 8rem;
 	letter-spacing: 3px;
-	margin: 0;
+	margin-bottom: 0;
 	margin-top: 20px;
 	color: #333;
+}
+
+header h3 {
+	font-size: 1.9rem;
+	color: black;
+	letter-spacing: 2px;
+	margin: 0;
 }
 
 .wrapper {
@@ -32,8 +46,13 @@ header img {
 }
 
 header p {
-	font-size: 25px;
+	font-size: 2.5rem;
 	text-align: center;
+	margin-top: 1rem;
+}
+
+.theresHope {
+	margin-top: 0;
 }
 
 form {
@@ -45,7 +64,7 @@ form {
 	width: 50%;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: 10px;
+	// margin-top: 10px;
 	font-size: 20px;
 	input {
 		margin: 15px;
@@ -82,12 +101,66 @@ form {
 // beginning of results section styles
 .result {
 	width: 24%;
-	border: 1px solid pink;
+	border: 1px solid #333;
 	float: left;
 	img {
 		max-width: 100%;
+		border-bottom: 3px solid #C5A868;
+	}
+}
+
+.results {
+	margin-top: 50px;
+}
+
+.results h2 {
+	word-wrap: break-word;
+	margin-left: 7px;
+	margin-right: 5px;
+	font-family: grad;
+	font-size: 2.7rem;
+}
+
+.results a {
+	color: #333;
+}
+
+.results a:visited {
+	color: lightgrey;
+}
+
+.results h3 {
+	margin-left: 7px;
+}
+
+.results p {
+	margin-left: 7px;
+}
+
+.loading {
+	background: rgba(255,255,255,0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	display: none;
+	.loadingInfo {
+		margin: auto;
+		text-align: center;
+		img {
+			width: 300px;
+		}
+	}
+	&.show {
+		display: flex;
 	}
 }
 
 @import 'rangeSlider';
 @import 'skinFlat';
+
+
+// '<h3>').text(item.price);
+// 			var posted =$('<p>').text('Date Posted: 
