@@ -50,7 +50,7 @@
 
     .irs-slider {
         position: absolute; display: block;
-        cursor: default;
+        cursor: pointer;
         z-index: 1;
     }
         .irs-slider.single {
@@ -96,7 +96,7 @@
         position: absolute;
         top: 0; left: 0;
         width: 1px; height: 8px;
-        background: #000;
+        background: white;
     }
     .irs-grid-pol.small {
         height: 4px;
@@ -108,7 +108,7 @@
         text-align: center;
         font-size: 9px; line-height: 9px;
         padding: 0 3px;
-        color: #000;
+        color: white;
     }
 
 .irs-disable-mask {

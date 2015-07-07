@@ -70,37 +70,21 @@ hood.displayInfo = function(result){
 	
 };
 
-// Saving it's instance to var 
-// var slider = $("#range").data("ionRangeSlider");
- 
-// Fire public method 
-// slider.reset();
-
-
-$(function(){
-	$("#range").ionRangeSlider({
-	    hide_min_max: true,
-	    keyboard: true,
-	    min: 1500,
-	    max: 3000,
-	    from: 1000,
-	    to: 4000,
-	    type: 'single',
-	    step: 1,
-	    prefix: "$",
-	    grid: true
-	});
-});
 
 $(function(){
 	console.log('loaded');
 	hood.collectInfo();
-
+	$("#price").ionRangeSlider({
+	  hide_min_max: true,
+	  keyboard: true,
+	  min: 1500,
+	  max: 3000,
+	  from: 1000,
+	  to: 4000,
+	  type: 'single',
+	  step: 1,
+	  prefix: "$",
+	  grid: true
+	});
 });
 
-//if statements:
-// no basements
-// empty shit, like the posted thing
-// if undefined bullshit
-
-// and make a loading page thing so peeps know whats up when waiting. 
