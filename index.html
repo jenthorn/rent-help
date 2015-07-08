@@ -5,6 +5,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>The Rental Help</title>
 	<link rel="stylesheet" href="styles/styles.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="images/favs/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="images/favs/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/favs/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="images/favs/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/favs/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="images/favs/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="images/favs/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="images/favs/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/favs/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="images/favs/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favs/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="images/favs/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favs/favicon-16x16.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="images/favs/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	<!-- <link rel="stylesheet" href="styles/ion.rangeSlider.css">
 	<link rel="stylesheet" href="styles/ion.rangeSlider.skinFlat.css"> -->
 	<script src="//use.typekit.net/whs8srq.js"></script>
@@ -12,13 +29,13 @@
 </head>
 <body>
 	<header>
-		<div class="corner-ribbon top-right sticky blue"><a href="http://jenthorn.ca">THIS GUN'S FOR HIRE</a></div>
+		<div class="corner-ribbon top-right sticky blue"><a href="http://jenthorn.ca">Created by: Jen Thorn<br><strong>THIS GUN'S FOR HIRE</strong></a></div>
 		<div class="wrapper">
 			<div class="flexwrap">
 				<img src="images/homeIcon.png" alt="home icon">
 				<h1>The Rental Help</h1>
-				<h3>Find an over priced rental in a hipster neighbourhood</h3>
-				<p>Renting in the city of Toronto sucks, eh? This will make it hurt a little less.<br> Scraping Kijiji and Craigslist&mdash;no posts from creepy dudes looking to be your new room mate, and no basement apartments found here.</p>
+				<h3>Find an over-priced rental in a hipster neighbourhood</h3>
+				<p>Renting in the city of Toronto sucks, eh? This will make it hurt a little less.<br>Pulling listings from Kijiji and Craigslist, this app excludes: <br><i class="fa fa-times"></i> wanted ads <br><i class="fa fa-times"></i> basement apartments</p>
 			</div>
 			<form>
 				<label for="location">Choose your hood</label>
@@ -56,13 +73,17 @@
 	</header>
 	
 	<section class="results " id="results">
+		<div class="wrapper">
+			<p class="warning">Working with Kijiji and Craigslist can be bonkers. But these results should be around what you're looking for. If not, hit refresh and try again. Everything will be okay.</p>
+		</div>
 		<div class="wrapper found clearfix"></div>
+		<!-- <div class="warning"><p>I apologize on behalf of Kijiji and Craigslist, I'm not technically suppose to do this. But this should be around what you're looking for. If not, hit refresh and try again.</p></div> -->
 	</section>
 
 	<div class="loading">
 		<div class="loadingInfo">
 			<img src="images/hoodwait.gif"alt="">
-			<p>Loading...</p>
+			<p class="message"></p>
 		</div>
 	</div>
 

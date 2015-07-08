@@ -14,6 +14,7 @@ hood.collectInfo = function(){
 		var beds = $('#beds').val();
 		hood.getInfo(location, price, beds);
 		$('.loading').addClass('show');
+		$('p.message').text('Loading...');
 	});
 };
 
@@ -23,16 +24,19 @@ hood.getInfo = function(itemOne, itemTwo, itemThree){
 		url: 'http://45.55.140.101/api?location=' + itemOne + '&price=' + itemTwo +'&rooms=' +  itemThree,
 		method: 'GET',
 		dataType: 'jsonp',
-		timeout: 5000,
+		timeout: 10000,
 		success: function(response){
 			$('.found').empty();
+			$('.warning').addClass('show');
 			hood.displayInfo(response);
 		},
 		error: function(x, t, m) {
 			if(t === "timeout") {
-				console.log('Scraper Timeout. Click Again');
-			} else {
-				alert(t);
+				$('p.message').text('Sorry! No apartments. Search Again!');
+				setTimeout(function() {
+					$('.loading').removeClass('show');
+					location.reload();
+				}, 1500)
 			}
 		}
 	});
@@ -41,11 +45,11 @@ hood.getInfo = function(itemOne, itemTwo, itemThree){
 
 hood.displayInfo = function(result){
 
-	
+	var warning = $('<p>').addClass('warning').text('Working with Kijiji and Craigslist can be bonkers. But these results should be around what you\'re looking for. If not, hit refresh and try again. Everything will be okay.');
 
 	$.each(result, function(i, item){
 		if (item.title.indexOf('basement') > 0 || item.title.indexOf('bsmt') > 0 || item.title.indexOf('Bsmt') > 0 || item.title.indexOf('BSMT') > 0 || item.title.indexOf('Basement') > 0 || item.title.indexOf('Lower level') > 0 || item.title.indexOf('lower level') > 0 || item.title.indexOf('Wanted') > 0 || item.title.indexOf('WANTED') > 0 || item.title.indexOf('wanted') > 0 ) {
-			console.log('fuck that');
+			console.log('Get out of here Basement Apartments!');
 		} else {
 			var pic = $('<img>').attr('src', item.pic);
 			var title = $('<h2>').text(item.title);
