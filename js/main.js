@@ -26,7 +26,6 @@ hood.getInfo = function(itemOne, itemTwo, itemThree){
 		timeout: 5000,
 		success: function(response){
 			$('.found').empty();
-			$('.loading').removeClass('show');
 			hood.displayInfo(response);
 		},
 		error: function(x, t, m) {
@@ -42,12 +41,7 @@ hood.getInfo = function(itemOne, itemTwo, itemThree){
 
 hood.displayInfo = function(result){
 
-	var $container = $('.found');
-
-	$container.packery({
-	  itemSelector: '.result',
-	  gutter: 10
-	});
+	
 
 	$.each(result, function(i, item){
 		if (item.title.indexOf('basement') > 0 || item.title.indexOf('bsmt') > 0 || item.title.indexOf('Bsmt') > 0 || item.title.indexOf('BSMT') > 0 || item.title.indexOf('Basement') > 0 || item.title.indexOf('Lower level') > 0 || item.title.indexOf('lower level') > 0 || item.title.indexOf('Wanted') > 0 || item.title.indexOf('WANTED') > 0 || item.title.indexOf('wanted') > 0 ) {
@@ -55,24 +49,84 @@ hood.displayInfo = function(result){
 		} else {
 			var pic = $('<img>').attr('src', item.pic);
 			var title = $('<h2>').text(item.title);
-			var price = $('<h3>').text(item.price);
-
-			
+			var price = $('<h3>').addClass('price').text(item.price);
 
 			var now = moment(item.posted).year(hood.year).format("MMM Do, YYYY");
-
-			var posted =$('<p>').text('Date Posted: ' + now);
-			var article = $('<article>').addClass('result').append(pic, title, price, posted);
-			var link = $('<a>').attr({href: item.link,target: '_blank'}).html(article);
+			var date = moment(item.posted).year(hood.year).format("YYYY-DD-MM hh:mm:ss");
+			var posted =$('<time>').addClass('date').text('Date Posted: ' + now);
+			var article = $('<article>').addClass('result').append(pic, title, price, posted).attr('data-time', date);
+			var link = $('<a>').addClass('resultLink').attr({href: item.link,target: '_blank'}).html(article);
 			$('.found').append(link);
 		}
-		$container.imagesLoaded( function() {
-		  $container.packery('reloadItems');
-		  $container.packery();
-		});
-		
-
 	});
+
+	$('.loading').removeClass('show');
+	var $container = $('.found');
+
+	$container.isotope({
+		itemSelector: '.result',
+		layoutMode: 'packery',
+		packery: {
+		  gutter: 10
+		}
+	});
+
+	$container.imagesLoaded( function() {
+		// $container.isotope({
+		// 	itemSelector: '.result',
+		// 	layoutMode: 'packery',
+		// 	packery: {
+		// 	  gutter: 10
+		// 	},
+		// 	getSortData : {
+	 //  	 date : function ( $elem ) {
+	 //  	 	var eachItem = $($elem).find('article').clone();
+	 //  	 	console.log(eachItem);
+	 //  	  return eachItem;
+	 //  	 }
+	 //  	},
+	 //  	sortBy : 'date'
+		// });
+		$container.isotope('reloadItems');
+		$container.isotope();
+	});
+	  
+	  // $container.on('layoutComplete', function( event, laidOutItems ) {
+	  // 	console.log('reload');
+	  // 	$container.isotope({
+	  // 	  itemSelector: '.result',
+	  // 	  layoutMode: 'packery',
+	  // 	  packery: {
+	  // 	    gutter: 10
+	  // 	  },
+	  // 	  getSortData: {
+	  // 	  	date: '.date'
+	  // 	  },
+	  // 	  sortBy: 'date'
+	  // 	});
+	  // });
+	 
+	  // // $container.isotope({
+	  // //   itemSelector: '.result',
+	  // //   layoutMode: 'packery',
+	  // //   packery: {
+	  // //     gutter: 10
+	  // //   },
+	  // //   getSortData: {
+	  // //   	date: '.date'
+	  // //   },
+	  // //   sortBy: 'date'
+	  // // });
+	  // // $container.isotope({
+	  // // 	getSortData : {
+	  // // 	 date : function ( $elem ) {
+	  // // 	 	var eachItem = $($elem).find("time").clone();
+	  // // 	  return eachItem;
+	  // // 	 }
+	  // // 	},
+	  // // 	sortBy : 'date'
+	  // // });
+	
 
 	
 };
