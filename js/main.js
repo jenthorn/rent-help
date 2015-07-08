@@ -50,83 +50,34 @@ hood.displayInfo = function(result){
 			var pic = $('<img>').attr('src', item.pic);
 			var title = $('<h2>').text(item.title);
 			var price = $('<h3>').addClass('price').text(item.price);
-
 			var now = moment(item.posted).year(hood.year).format("MMM Do, YYYY");
-			var date = moment(item.posted).year(hood.year).format("YYYY-DD-MM hh:mm:ss");
+			var display = moment(item.posted).format("MMDD");
+			var hiddenDate =$('<time>').addClass('hideDate').text(display);
 			var posted =$('<time>').addClass('date').text('Date Posted: ' + now);
-			var article = $('<article>').addClass('result').append(pic, title, price, posted).attr('data-time', date);
+			var article = $('<article>').addClass('result').append(pic, title, price, posted, hiddenDate);
 			var link = $('<a>').addClass('resultLink').attr({href: item.link,target: '_blank'}).html(article);
 			$('.found').append(link);
 		}
 	});
 
 	$('.loading').removeClass('show');
+
+	// Animate the body
+	$('html, body').animate({
+		scrollTop: $('#results').offset().top - 45
+	}, 750);
 	var $container = $('.found');
 
-	$container.isotope({
-		itemSelector: '.result',
-		layoutMode: 'packery',
-		packery: {
-		  gutter: 10
-		}
+	$container.imagesLoaded(function() {
+		$container.isotope({
+			itemSelector: '.result',
+			layoutMode: 'packery',
+			packery: { gutter: 10 },
+			getSortData: { date: '.hideDate' },
+			sortBy: 'date',
+			sortAscending: false
+		});
 	});
-
-	$container.imagesLoaded( function() {
-		// $container.isotope({
-		// 	itemSelector: '.result',
-		// 	layoutMode: 'packery',
-		// 	packery: {
-		// 	  gutter: 10
-		// 	},
-		// 	getSortData : {
-	 //  	 date : function ( $elem ) {
-	 //  	 	var eachItem = $($elem).find('article').clone();
-	 //  	 	console.log(eachItem);
-	 //  	  return eachItem;
-	 //  	 }
-	 //  	},
-	 //  	sortBy : 'date'
-		// });
-		$container.isotope('reloadItems');
-		$container.isotope();
-	});
-	  
-	  // $container.on('layoutComplete', function( event, laidOutItems ) {
-	  // 	console.log('reload');
-	  // 	$container.isotope({
-	  // 	  itemSelector: '.result',
-	  // 	  layoutMode: 'packery',
-	  // 	  packery: {
-	  // 	    gutter: 10
-	  // 	  },
-	  // 	  getSortData: {
-	  // 	  	date: '.date'
-	  // 	  },
-	  // 	  sortBy: 'date'
-	  // 	});
-	  // });
-	 
-	  // // $container.isotope({
-	  // //   itemSelector: '.result',
-	  // //   layoutMode: 'packery',
-	  // //   packery: {
-	  // //     gutter: 10
-	  // //   },
-	  // //   getSortData: {
-	  // //   	date: '.date'
-	  // //   },
-	  // //   sortBy: 'date'
-	  // // });
-	  // // $container.isotope({
-	  // // 	getSortData : {
-	  // // 	 date : function ( $elem ) {
-	  // // 	 	var eachItem = $($elem).find("time").clone();
-	  // // 	  return eachItem;
-	  // // 	 }
-	  // // 	},
-	  // // 	sortBy : 'date'
-	  // // });
-	
 
 	
 };
